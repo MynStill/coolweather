@@ -1,0 +1,8 @@
+1.问题20190424：
+在使用 Weather weather  = new Gson().fromJson(weatherContent, Weather.class);时，
+返回的weather一直为null。编译器出现如下错误： 
+com.google.gson.JsonSyntaxException: java.lang.NumberFormatException: For input string: xxxx
+
+1.原因20190425：
+在实体类Weather 里面，有一个字段本应该是String类型，写成了int型，可能导致Gson解析json时发生了异常错误，
+之后一定要注意这一点，即把需要转换的实体类（Weather）的每个字段都检查清楚。 
